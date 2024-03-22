@@ -11,3 +11,13 @@ $long4 = 3;
 $res4 = "xxx";
 
 $resto = $res1 + "-";
+
+// ryvh
+// ryvehe
+// ryvhyhtrèfè
+// jhrtuy
+// ntubj
+// jhbngh
+// fghvd
+// dscf
+// xml_error_stringdf
