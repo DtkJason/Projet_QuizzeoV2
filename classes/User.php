@@ -9,6 +9,7 @@ class User extends Database
             $query = $this->bdd->prepare("UPDATE utilisateur SET pseudo = :newPseudo WHERE id_utilisateur = $idUser");
             $query->bindParam(":newPseudo", $newPseudo);
             $query->execute();
+            //test
         }
     }
 
