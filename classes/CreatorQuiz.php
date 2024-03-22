@@ -3,7 +3,15 @@ require "User.php";
 
 class CreatorQuiz extends User
 {
-    public function creerQuiz()
+    public function addQuiz()
+    {
+    }
+
+    public function addQuestion()
+    {
+    }
+
+    public function addChoix()
     {
     }
 }

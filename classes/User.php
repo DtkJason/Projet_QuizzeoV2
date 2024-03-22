@@ -3,17 +3,16 @@ require __DIR__ . "/../config/ConnectionDB.php";
 
 class User extends Database
 {
-    public function modifierPseudo($idUser, $newPseudo)
+    public function editPseudo($idUser, $newPseudo)
     {
         if (!empty($newPseudo)) {
             $query = $this->bdd->prepare("UPDATE utilisateur SET pseudo = :newPseudo WHERE id_utilisateur = $idUser");
             $query->bindParam(":newPseudo", $newPseudo);
             $query->execute();
-            //test
         }
     }
 
-    public function modifierEmail($idUser, $newEmail)
+    public function editEmail($idUser, $newEmail)
     {
         if (!empty($newEmail)) {
             $query = $this->bdd->prepare("UPDATE utilisateur SET email = :newEmail WHERE id_utilisateur = $idUser");
@@ -22,7 +21,7 @@ class User extends Database
         }
     }
 
-    public function modifierMDP($idUser, $newMDP)
+    public function editMDP($idUser, $newMDP)
     {
         if (!empty($newMDP)) {
             $query = $this->bdd->prepare("UPDATE utilisateur SET mdp = :newMDP WHERE id_utilisateur = $idUser");
