@@ -57,4 +57,12 @@ class Authentification extends Database
         $query->bindParam(":statut", $online);
         $query->execute();
     }
+
+    public function setOffline($idUser)
+    {
+        $online = false;
+        $query = $this->bdd->prepare("UPDATE utilisateur SET statut_activite = :statut WHERE id_utilisateur = $idUser");
+        $query->bindParam(":statut", $online);
+        $query->execute();
+    }
 }
