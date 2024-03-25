@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . "/../config/ConnectionDB.php";
+require __DIR__ . "/../config/Database.php";
 
 class Authentification extends Database
 {
@@ -26,6 +26,7 @@ class Authentification extends Database
                     $query3->bindParam(":email", $email);
                     $query3->bindParam(":mdp", $passwordHash);
                     $query3->execute();
+                    echo "Inscription réussie !";
                 }
             }
         } else {
@@ -40,11 +41,20 @@ class Authentification extends Database
         $query1->execute();
 
         $userData = $query1->fetch(PDO::FETCH_ASSOC);
+        $mdp = $userData["mdp"];
 
         if ($query1->rowCount() === 1) {
-            if (password_verify($password, $userData["mdp"])) {
+            if (password_verify($password, $mdp)) {
                 return $userData;
             }
         }
+    }
+
+    public function setOnline($idUser)
+    {
+        $online = true;
+        $query = $this->bdd->prepare("UPDATE utilisateur SET statut_activite = :statut WHERE id_utilisateur = $idUser");
+        $query->bindParam(":statut", $online);
+        $query->execute();
     }
 }

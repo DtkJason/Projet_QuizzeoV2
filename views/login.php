@@ -4,6 +4,8 @@ require __DIR__ . "/../classes/authentification.php";
 if (isset($_POST["submit"])) {
     $login = new Authentification();
     $userData = $login->login($_POST["email"], $_POST["password"]);
+    $idUser = $userData["id_utilisateur"];
+    $login->setOnline($idUser);
 
     if ($userData) {
         if ($userData["statut_compte"] === 0) {
