@@ -17,6 +17,7 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
+    <?php require __DIR__ . "/../shared/headers/headerOffline.php"; ?>
     <h1>Inscription</h1>
 
     <form method="POST">
@@ -28,6 +29,7 @@ if (isset($_POST["submit"])) {
         <input type="password" name="password" placeholder="Mot de passe" required>
         <input type="submit" name="submit" value="Valider">
     </form>
+    <?php require __DIR__ . "/../shared/footer/footer.php"; ?>
 </body>
 
 </html>

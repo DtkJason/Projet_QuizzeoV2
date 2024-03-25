@@ -1,14 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start();
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <h1>Index</h1>
-</body>
-
-</html>
+if(isset($_SESSION["id"])) {
+    if($_SESSION["role"] == 5) {
+        header("Location: views/admin/adminPage.php");
+        exit();
+    } elseif ($_SESSION["role"] == 4) {
+        header("Location: views/validator/validatorPage.php");
+        exit();
+    } elseif ($_SESSION["role"] == 3) {
+        header("Location: views/creatorQuiz/creatorQuizPage.php");
+        exit();
+    } elseif ($_SESSION["role"] == 2) {
+        header("Location: views/adminQuiz/adminQuizPage.php");
+        exit();
+    } elseif ($_SESSION["role"] == 1) {
+        header("Location: views/user/userPage.php");
+        exit();
+    }
+} else {
+    header("Location: views/login.php");
+    exit();
+}

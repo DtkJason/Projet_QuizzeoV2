@@ -1,29 +1,37 @@
 <?php
-require __DIR__ . "/../classes/authentification.php";
+require __DIR__ . "/../classes/Authentification.php";
 
 if (isset($_POST["submit"])) {
     $login = new Authentification();
     $userData = $login->login($_POST["email"], $_POST["password"]);
+    $_SESSION["id"] = $userData["id_utilisateur"];
+    $_SESSION["pseudo"] = $userData["pseudo"];
+    $_SESSION["email"] = $userData["email"];
+    $_SESSION["role"] = $userData["id_groupe"];
     $idUser = $userData["id_utilisateur"];
-    $login->setOnline($idUser);
 
     if ($userData) {
         if ($userData["statut_compte"] === 0) {
             header("Location: disabled.php");
             session_destroy();
         } elseif ($userData["id_groupe"] === 1) {
+            $login->setOnline($idUser);
             header("Location: admin/adminPage.php");
             exit();
         } elseif ($userData["id_groupe"] === 2) {
+            $login->setOnline($idUser);
             header("Location: validator/validatorPage.php");
             exit();
         } elseif ($userData["id_groupe"] === 3) {
+            $login->setOnline($idUser);
             header("Location: adminQuiz/adminQuizPage.php");
             exit();
         } elseif ($userData["id_groupe"] === 4) {
+            $login->setOnline($idUser);
             header("Location: creatorQuiz/creatorQuizPage.php");
             exit();
         } elseif ($userData["id_groupe"] === 5) {
+            $login->setOnline($idUser);
             header("Location: user/userPage.php");
             exit();
         } else {
@@ -44,6 +52,7 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
+    <?php require __DIR__ . "/../shared/headers/headerOffline.php"; ?>
     <div>
         <h1>Connexion</h1>
         <form method="POST">
@@ -54,6 +63,7 @@ if (isset($_POST["submit"])) {
             <input type="submit" name="submit" value="Connexion">
         </form>
     </div>
+    <?php require __DIR__ . "/../shared/footer/footer.php"; ?>
 </body>
 
 </html>

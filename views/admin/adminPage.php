@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -8,6 +12,7 @@
 </head>
 
 <body>
+    <?php require __DIR__ . "/../../shared/headers/headerOnline.php"; ?>
     <h1>Page Admin</h1>
     <p>Vous êtes sur la page Admin</p>
 </body>
