@@ -51,35 +51,35 @@ class Admin extends Validator
             echo "<tr>";
             echo "<td><p>$id</p></td>";
             echo "<td><p>$pseudo</p></td>";
-            echo "<td><a href='../../shared/forms/editPseudo.php'>Modifer</a></td>";
+            echo "<td><a href='../forms/editPseudo.php?idUser=$id'>Modifer</a></td>";
             echo "<td><p>$email</p></td>";
-            echo "<td><a href='../../shared/forms/editEmail.php'>Modifier</a></td>";
+            echo "<td><a href='../forms/editEmail.php?idUser=$id'>Modifier</a></td>";
             echo "<td><p>motdepasse</p></td>";
-            echo "<td><a href='../../shared/forms/editMDP.php'>Modifier</a></td>";
+            echo "<td><a href='../forms/editMDP.php?idUser=$id'>Modifier</a></td>";
 
             if ($role == 1) {
                 echo "<td><p>Admin</p></td>";
-                echo "<td><a href='../../shared/forms/typeCompte.php'>Modifier</a></td>";
+                echo "<td><a href='../forms/typeCompte.php?idUser=$id'>Modifier</a></td>";
             } elseif ($role == 2) {
                 echo "<td><p>Validateur</p></td>";
-                echo "<td><a href='../../shared/forms/typeCompte.php'>Modifier</a></td>";
+                echo "<td><a href='../forms/typeCompte.php?idUser=$id'>Modifier</a></td>";
             } elseif ($role == 3) {
                 echo "<td><p>Admin Quiz</p></td>";
-                echo "<td><a href='../../shared/forms/typeCompte.php'>Modifier</a></td>";
+                echo "<td><a href='../forms/typeCompte.php?idUser=$id'>Modifier</a></td>";
             } elseif ($role == 4) {
                 echo "<td><p>Créateur Quiz</p></td>";
-                echo "<td><a href='../../shared/forms/typeCompte.php'>Modifier</a></td>";
+                echo "<td><a href='../forms/typeCompte.php?idUser=$id'>Modifier</a></td>";
             } else {
                 echo "<td><p>Utilisateur</p></td>";
-                echo "<td><a href='../../shared/forms/typeCompte.php'>Modifier</a></td>";
+                echo "<td><a href='../forms/typeCompte.php?idUser=$id'>Modifier</a></td>";
             }
 
             if ($status == 0) {
                 echo "<td><span>Inactif</span></td>";
-                echo "<td><a href='../../shared/forms/statutCompte.php'>Modifier</a></td>";
+                echo "<td><a href='../forms/statutCompte.php?idUser=$id'>Modifier</a></td>";
             } else {
                 echo "<td><span>Actif</span></td>";
-                echo "<td><a href='../../shared/forms/statutCompte.php'>Modifier</a></td>";
+                echo "<td><a href='../forms/statutCompte.php?idUser=$id'>Modifier</a></td>";
             }
 
             if ($activity == 0) {

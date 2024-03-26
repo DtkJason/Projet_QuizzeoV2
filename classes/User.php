@@ -6,18 +6,36 @@ class User extends Database
     public function editPseudo($idUser, $newPseudo)
     {
         if (!empty($newPseudo)) {
-            $query = $this->bdd->prepare("UPDATE utilisateur SET pseudo = :newPseudo WHERE id_utilisateur = $idUser");
-            $query->bindParam(":newPseudo", $newPseudo);
-            $query->execute();
+            $query1 = $this->bdd->prepare("SELECT * FROM utilisateur WHERE pseudo = :pseudo");
+            $query1->bindParam(":pseudo", $newPseudo);
+            $query1->execute();
+
+            if ($query1->rowCount() > 0) {
+                echo "Pseudo déjà utilisé";
+            } else {
+                $query2 = $this->bdd->prepare("UPDATE utilisateur SET pseudo = :newPseudo WHERE id_utilisateur = $idUser");
+                $query2->bindParam(":newPseudo", $newPseudo);
+                $query2->execute();
+                echo "Pseudo modifié";
+            }
         }
     }
 
     public function editEmail($idUser, $newEmail)
     {
         if (!empty($newEmail)) {
-            $query = $this->bdd->prepare("UPDATE utilisateur SET email = :newEmail WHERE id_utilisateur = $idUser");
-            $query->bindParam(":newEmail", $newEmail);
-            $query->execute();
+            $query1 = $this->bdd->prepare("SELECT * FROM utilisateur WHERE email = :email");
+            $query1->bindParam(":email", $newEmail);
+            $query1->execute();
+
+            if ($query1->rowCount() > 0) {
+                echo "Email déjà utilisé";
+            } else {
+                $query = $this->bdd->prepare("UPDATE utilisateur SET email = :newEmail WHERE id_utilisateur = $idUser");
+                $query->bindParam(":newEmail", $newEmail);
+                $query->execute();
+                echo "Email modifié";
+            }
         }
     }
 
@@ -27,6 +45,11 @@ class User extends Database
             $query = $this->bdd->prepare("UPDATE utilisateur SET mdp = :newMDP WHERE id_utilisateur = $idUser");
             $query->bindParam(":newMDP", $newMDP);
             $query->execute();
+            echo "Mot de passe modifié";
         }
+    }
+
+    public function displayProfile()
+    {
     }
 }

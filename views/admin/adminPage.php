@@ -15,6 +15,7 @@ session_start();
     <?php require __DIR__ . "/../../shared/headers/headerOnline.php"; ?>
     <h1>Page Admin</h1>
     <p>Vous êtes sur la page Admin</p>
+    <?php require __DIR__ . "/../../shared/footer/footer.php"; ?>
 </body>
 
 </html>

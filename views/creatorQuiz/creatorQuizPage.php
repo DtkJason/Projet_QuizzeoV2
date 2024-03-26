@@ -8,8 +8,10 @@
 </head>
 
 <body>
+    <?php require __DIR__ . "/../../shared/headers/headerOnline.php"; ?>
     <h1>Page Créateur Quiz</h1>
     <p>Vous êtes sur la page Créateur Quiz</p>
+    <?php require __DIR__ . "/../../shared/footer/footer.php"; ?>
 </body>
 
 </html>

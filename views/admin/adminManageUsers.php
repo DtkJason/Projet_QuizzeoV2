@@ -13,6 +13,7 @@ require __DIR__ . "/../../classes/Admin.php";
 </head>
 
 <body>
+    <?php require __DIR__ . "/../../shared/headers/headerOnline.php"; ?>
     <h1>Gérer les membres</h1>
     <table>
         <thead>
@@ -50,6 +51,7 @@ require __DIR__ . "/../../classes/Admin.php";
             ?>
         </thead>
     </table>
+    <?php require __DIR__ . "/../../shared/footer/footer.php"; ?>
 </body>
 
 </html>
