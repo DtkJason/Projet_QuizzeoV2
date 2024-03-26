@@ -1,5 +1,9 @@
 <?php
 require __DIR__ . "/../../classes/Admin.php";
+
+if (!isset($_SESSION["id"])) {
+    header("Location: ../login.php");
+}
 ?>
 
 <!DOCTYPE html>

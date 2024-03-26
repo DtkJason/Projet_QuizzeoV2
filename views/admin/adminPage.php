@@ -1,5 +1,15 @@
 <?php
-session_start();
+require __DIR__ . "/../../classes/Admin.php";
+
+if (!isset($_SESSION["id"])) {
+    header("Location: ../login.php");
+}
+
+if (isset($_SESSION["role"])) {
+    if ($_SESSION["role"] != 1) {
+        header("Location: ../login.php");
+    }
+}
 ?>
 
 <!DOCTYPE html>
