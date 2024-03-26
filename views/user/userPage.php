@@ -3,11 +3,13 @@ require __DIR__ . "/../../classes/User.php";
 
 if (!isset($_SESSION["id"])) {
     header("Location: ../login.php");
+    exit();
 }
 
 if (isset($_SESSION["role"])) {
     if ($_SESSION["role"] != 5) {
         header("Location: ../login.php");
+        exit();
     }
 }
 ?>
