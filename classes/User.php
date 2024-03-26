@@ -49,7 +49,18 @@ class User extends Database
         }
     }
 
-    public function displayProfile()
+    public function displayProfile($idUser)
     {
+        $query = $this->bdd->prepare("SELECT * from utilisateur WHERE id_utilisateur = :idUser");
+        $query->bindParam(":idUser", $idUser);
+        $query->execute();
+
+        $data = $query->fetch(PDO::FETCH_ASSOC);
+        $pseudo = $data["pseudo"];
+        $email = $data["email"];
+
+        echo "<span>Pseudo: $pseudo<a href='forms/editPseudo.php?idUser=$idUser'>Modifier</a></span>";
+        echo "<span>Email: $email<a href='forms/editEmail.php?idUser=$idUser'>Modifier</a></span>";
+        echo "<span>Mot de passe: <a href='forms/editMDP.php?idUser=$idUser'>Modifier</a></span>";
     }
 }
