@@ -7,16 +7,18 @@ class Validator extends CreatorQuiz
     {
         $active = true;
         $query = $this->bdd->prepare("UPDATE utilisateur SET statut_compte = :newStatus WHERE id_utilisateur = $idUser");
-        $query->bindParam(":newRole", $active);
+        $query->bindParam(":newStatus", $active);
         $query->execute();
+        echo "L'utilisateur est maintenant actif";
     }
 
     public function setInactive($idUser)
     {
         $active = false;
         $query = $this->bdd->prepare("UPDATE utilisateur SET statut_compte = :newStatus WHERE id_utilisateur = $idUser");
-        $query->bindParam(":newRole", $active);
+        $query->bindParam(":newStatus", $active);
         $query->execute();
+        echo "L'utilisateur est maintenant inactif";
     }
 
     public function editRole($idUser, $newRole)

@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-    <?php require __DIR__ . "/../../shared/headers/headerOnline.php"; ?>
+    <?php require __DIR__ . "/../../shared/headers/headerForms.php"; ?>
     <form method="POST">
         <label for="email">Nouvel email</label>
         <input type="text" name="email" required>
