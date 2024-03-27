@@ -26,6 +26,14 @@
     ?>
 
     <a href="profile.php">Compte</a>
-    <a href="">Support</a>
+
+    <?php
+    if (isset($_SESSION["role"])) {
+        if ($_SESSION["role"] >= 3) {
+            echo "<a href='support.php'>Support</a>";
+        }
+    }
+    ?>
+
     <a href="../../shared/others/disconnect.php">Déconnexion</a>
 </header>

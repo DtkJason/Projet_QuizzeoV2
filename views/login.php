@@ -12,7 +12,7 @@ if (isset($_POST["submit"])) {
 
     if ($userData) {
         if ($userData["statut_compte"] === 0) {
-            header("Location: inactive.php");
+            header("Location: inactive.php?idUser=$idUser");
             session_destroy();
         } elseif ($userData["id_groupe"] === 1) {
             $login->setOnline($idUser);

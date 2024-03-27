@@ -63,4 +63,15 @@ class User extends Database
         echo "<span>Email: $email<a href='forms/editEmail.php?idUser=$idUser'>Modifier</a></span>";
         echo "<span>Mot de passe: <a href='forms/editMDP.php?idUser=$idUser'>Modifier</a></span>";
     }
+
+    public function createTicket($idUser, $request)
+    {
+        if (!empty($request)) {
+            $query = $this->bdd->prepare("INSERT INTO ticket(requete, id_utilisateur) VALUES (:requete, :idUser)");
+            $query->bindParam(":requete", $request);
+            $query->bindParam(":idUser", $idUser);
+            $query->execute();
+            echo "Votre ticket a été crée";
+        }
+    }
 }
