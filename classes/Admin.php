@@ -90,4 +90,41 @@ class Admin extends Validator
             echo "</tr>";
         }
     }
+
+    public function displayTickets()
+    {
+        $query = $this->bdd->prepare("SELECT * FROM ticket");
+        $query->execute();
+
+        $data = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($data as $row) {
+            $idTicket = $row["ticket"];
+
+            if ($row["requete"] == 1) {
+                $request = "Déblocage de compte";
+            } elseif ($row["requete"] == 2) {
+                $request = "Déblocage de quiz";
+            }
+
+            if ($row["en_cours"] == 0) {
+                $enCours = "Disponible";
+            } elseif ($row["en_cours"] == 1) {
+                $enCours = "En cours";
+            }
+
+            if ($row["resolu"] == 0) {
+                $status = "Non résolu";
+            } elseif ($row["resolu"] == 1) {
+                $status = "Résolu";
+            }
+
+            $idUser = $row["id_utilisateur"];
+
+            echo "<tr>";
+            echo "<td>$idTicket</td>";
+            echo "<td>$request</td>";
+            echo "</tr>";
+        }
+    }
 }
