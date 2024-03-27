@@ -61,9 +61,9 @@ class User extends Database
         $apiKey = $data["api_key"];
         $role = $data["id_groupe"];
 
-        echo "<span>Pseudo: $pseudo<a href='forms/editPseudo.php?idUser=$idUser'>Modifier</a></span>";
-        echo "<span>Email: $email<a href='forms/editEmail.php?idUser=$idUser'>Modifier</a></span>";
-        echo "<span>Mot de passe: <a href='forms/editMDP.php?idUser=$idUser'>Modifier</a></span>";
+        echo "<span>Pseudo: $pseudo<a href='../forms/editPseudo.php?idUser=$idUser'>Modifier</a></span>";
+        echo "<span>Email: $email<a href='../forms/editEmail.php?idUser=$idUser'>Modifier</a></span>";
+        echo "<span>Mot de passe: <a href='../forms/editMDP.php?idUser=$idUser'>Modifier</a></span>";
         echo "<span>Clé API: $apiKey<a href='../../shared/others/generateNewKey.php?idUser=$idUser&role=$role'>Générer</a></span>";
     }
 
