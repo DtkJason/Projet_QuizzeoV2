@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-    <?php require __DIR__ . "/../../shared/headers/headerOnline.php"; ?>
+    <?php require __DIR__ . "/../../shared/headers/headerSupport.php"; ?>
     <form method="POST">
         <label for="request">Votre requête : </label>
         <select name="ticket" required>

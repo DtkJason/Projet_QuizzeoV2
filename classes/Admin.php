@@ -93,15 +93,15 @@ class Admin extends Validator
         }
     }
 
-    public function displayTickets()
+    public function displayTicketsAvailable()
     {
-        $query = $this->bdd->prepare("SELECT * FROM ticket");
-        $query->execute();
+        $query1 = $this->bdd->prepare("SELECT * FROM ticket WHERE resolu = 0");
+        $query1->execute();
 
-        $data = $query->fetchAll(PDO::FETCH_ASSOC);
+        $data1 = $query1->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach ($data as $row) {
-            $idTicket = $row["ticket"];
+        foreach ($data1 as $row) {
+            $idTicket = $row["id_ticket"];
 
             if ($row["requete"] == 1) {
                 $request = "Déblocage de compte";
@@ -122,11 +122,72 @@ class Admin extends Validator
             }
 
             $idUser = $row["id_utilisateur"];
+            $query2 = $this->bdd->prepare("SELECT * FROM utilisateur WHERE id_utilisateur = :idUser");
+            $query2->bindParam(":idUser", $idUser);
+            $query2->execute();
+
+            $data2 = $query2->fetch(PDO::FETCH_ASSOC);
+            $pseudo = $data2["pseudo"];
 
             echo "<tr>";
             echo "<td>$idTicket</td>";
             echo "<td>$request</td>";
+            echo "<td>$enCours</td>";
+            echo "<td>$status</td>";
+            echo "<td>$pseudo</td>";
+            if ($row["en_cours"] == 0) {
+                echo "<td><a href='prendreTicket.php?idTicket=$idTicket'>Prendre</a></td>";
+            }
+            echo "<td><a href='cloturerTicket.php?idTicket=$idTicket'>Clôturer</a></td>";
             echo "</tr>";
         }
+    }
+
+    public function displayTicketsDone()
+    {
+        $query1 = $this->bdd->prepare("SELECT * FROM ticket WHERE resolu = 1");
+        $query1->execute();
+
+        $data1 = $query1->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($data1 as $row) {
+            $idTicket = $row["id_ticket"];
+
+            if ($row["requete"] == 1) {
+                $request = "Déblocage de compte";
+            } elseif ($row["requete"] == 2) {
+                $request = "Déblocage de quiz";
+            }
+
+            $idUser = $row["id_utilisateur"];
+            $query2 = $this->bdd->prepare("SELECT * FROM utilisateur WHERE id_utilisateur = :idUser");
+            $query2->bindParam(":idUser", $idUser);
+            $query2->execute();
+
+            $data2 = $query2->fetch(PDO::FETCH_ASSOC);
+            $pseudo = $data2["pseudo"];
+
+            echo "<tr>";
+            echo "<td>$idTicket</td>";
+            echo "<td>$request</td>";
+            echo "<td>Résolu</td>";
+            echo "<td>$pseudo</td>";
+            echo "</tr>";
+        }
+    }
+    public function prendreTicket($idTicket)
+    {
+        $enCours = true;
+        $query1 = $this->bdd->prepare("UPDATE ticket SET en_cours = :enCours WHERE id_ticket = $idTicket");
+        $query1->bindParam(":enCours", $enCours);
+        $query1->execute();
+    }
+
+    public function cloturerTicket($idTicket)
+    {
+        $status = true;
+        $query = $this->bdd->prepare("UPDATE ticket SET resolu = :resolu WHERE id_ticket = $idTicket");
+        $query->bindParam(":resolu", $status);
+        $query->execute();
     }
 }

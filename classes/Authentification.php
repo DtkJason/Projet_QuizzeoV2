@@ -42,11 +42,13 @@ class Authentification extends Database
         $query1->execute();
 
         $userData = $query1->fetch(PDO::FETCH_ASSOC);
-        $mdp = $userData["mdp"];
 
         if ($query1->rowCount() === 1) {
+            $mdp = $userData["mdp"];
             if (password_verify($password, $mdp)) {
                 return $userData;
+            } else {
+                return false;
             }
         }
     }

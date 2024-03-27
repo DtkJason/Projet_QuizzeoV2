@@ -4,14 +4,14 @@ require __DIR__ . "/../classes/Authentification.php";
 if (isset($_POST["submit"])) {
     $login = new Authentification();
     $userData = $login->login($_POST["email"], $_POST["password"]);
-    $_SESSION["id"] = $userData["id_utilisateur"];
-    $_SESSION["pseudo"] = $userData["pseudo"];
-    $_SESSION["email"] = $userData["email"];
-    $_SESSION["apiKey"] = $userData["api_key"];
-    $_SESSION["role"] = $userData["id_groupe"];
-    $idUser = $userData["id_utilisateur"];
 
     if ($userData) {
+        $_SESSION["id"] = $userData["id_utilisateur"];
+        $_SESSION["pseudo"] = $userData["pseudo"];
+        $_SESSION["email"] = $userData["email"];
+        $_SESSION["apiKey"] = $userData["api_key"];
+        $_SESSION["role"] = $userData["id_groupe"];
+        $idUser = $userData["id_utilisateur"];
         if ($userData["statut_compte"] === 0) {
             header("Location: inactive.php?idUser=$idUser");
             session_destroy();
@@ -39,6 +39,8 @@ if (isset($_POST["submit"])) {
             header("Location: index.php");
             exit();
         }
+    } else {
+        echo "Email ou mot de passe incorrect";
     }
 }
 ?>

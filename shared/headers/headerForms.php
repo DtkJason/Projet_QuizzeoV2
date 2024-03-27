@@ -25,7 +25,22 @@
     }
     ?>
 
-    <a href="profile.php">Compte</a>
+    <?php
+    if (isset($_SESSION["role"])) {
+        $idRole = $_SESSION["role"];
+        if ($idRole == 1) {
+            echo "<a href='../admin/profile.php'>Compte</a>";
+        } elseif ($idRole == 2) {
+            echo "<a href='../validator/profile.php'>Compte</a>";
+        } elseif ($idRole == 3) {
+            echo "<a href='../adminQuiz/profile.php'>Compte</a>";
+        } elseif ($idRole == 4) {
+            echo "<a href='../creatorQuiz/profile.php'>Compte</a>";
+        } else {
+            echo "<a href='../user/userPage.php'>Compte</a>";
+        }
+    }
+    ?>
 
     <?php
     if (isset($_SESSION["role"])) {
