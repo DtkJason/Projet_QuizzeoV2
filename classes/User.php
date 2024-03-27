@@ -58,10 +58,13 @@ class User extends Database
         $data = $query->fetch(PDO::FETCH_ASSOC);
         $pseudo = $data["pseudo"];
         $email = $data["email"];
+        $apiKey = $data["api_key"];
+        $role = $data["id_groupe"];
 
         echo "<span>Pseudo: $pseudo<a href='forms/editPseudo.php?idUser=$idUser'>Modifier</a></span>";
         echo "<span>Email: $email<a href='forms/editEmail.php?idUser=$idUser'>Modifier</a></span>";
         echo "<span>Mot de passe: <a href='forms/editMDP.php?idUser=$idUser'>Modifier</a></span>";
+        echo "<span>Clé API: $apiKey<a href='../../shared/others/generateNewKey.php?idUser=$idUser&role=$role'>Générer</a></span>";
     }
 
     public function createTicket($idUser, $request)
@@ -84,5 +87,13 @@ class User extends Database
             $apiKey .= $caracteres[rand(0, $longueurCaracteres - 1)];
         }
         return $apiKey;
+    }
+
+    public function newApiKey($idUser, $apiKey)
+    {
+        $query = $this->bdd->prepare("UPDATE utilisateur SET api_key = :newKey WHERE id_utilisateur = :idUser");
+        $query->bindParam(":idUser", $idUser);
+        $query->bindParam(":newKey", $apiKey);
+        $query->execute();
     }
 }

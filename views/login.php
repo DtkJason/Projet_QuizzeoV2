@@ -7,6 +7,7 @@ if (isset($_POST["submit"])) {
     $_SESSION["id"] = $userData["id_utilisateur"];
     $_SESSION["pseudo"] = $userData["pseudo"];
     $_SESSION["email"] = $userData["email"];
+    $_SESSION["apiKey"] = $userData["api_key"];
     $_SESSION["role"] = $userData["id_groupe"];
     $idUser = $userData["id_utilisateur"];
 
