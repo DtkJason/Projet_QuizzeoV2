@@ -14,19 +14,58 @@ if (isset($_SESSION["role"])) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Admin</title>
+    <title>Gérer les membres</title>
 </head>
 
 <body>
     <?php require __DIR__ . "/../../shared/headers/headerOnline.php"; ?>
-    <h1>Page Admin</h1>
-    <p>Vous êtes sur la page Admin</p>
+    <h1>Gérer les membres</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    <p>ID</p>
+                </td>
+                <td>
+                    <p>Pseudo</p>
+                </td>
+                <td></td>
+                <td>
+                    <p>Email</p>
+                </td>
+                <td></td>
+                <td>
+                    <p>Mot de passe</p>
+                </td>
+                <td></td>
+                <td>
+                    <p>Type de compte</p>
+                </td>
+                <td></td>
+                <td>
+                    <p>Statut du compte</p>
+                </td>
+                <td></td>
+                <td>
+                    <p>Activité</p>
+                </td>
+            </tr>
+            <?php
+            $admin = new Admin();
+            if (isset($_SESSION["id"])) {
+                $idUser = $_SESSION["id"];
+            }
+            $admin->displayUsersAdmin($idUser);
+            ?>
+        </thead>
+    </table>
     <?php require __DIR__ . "/../../shared/footer/footer.php"; ?>
 </body>
 

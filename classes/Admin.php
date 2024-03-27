@@ -34,9 +34,10 @@ class Admin extends Validator
         }
     }
 
-    public function displayUsers()
+    public function displayUsersAdmin($idUser)
     {
-        $query = $this->bdd->prepare("SELECT * FROM utilisateur");
+        $query = $this->bdd->prepare("SELECT * FROM utilisateur EXCEPT SELECT * FROM utilisateur WHERE id_utilisateur = :idUser");
+        $query->bindParam(":idUser", $idUser);
         $query->execute();
 
         $data = $query->fetchAll(PDO::FETCH_ASSOC);

@@ -31,7 +31,13 @@ if (isset($_POST["submit"])) {
         <label for="type">Type de compte</label>
         <select name="type" required>
             <option value="">Choisir</option>
-            <option value="1">Administrateur</option>
+            <?php
+            if (isset($_SESSION["role"])) {
+                if ($_SESSION["role"] == 1) {
+                    echo "<option value='1'>Administrateur</option>";
+                }
+            }
+            ?>
             <option value="2">Validateur</option>
             <option value="3">Administrateur Quiz</option>
             <option value="4">Créateur Quiz</option>

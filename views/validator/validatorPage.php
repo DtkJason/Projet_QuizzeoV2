@@ -7,7 +7,7 @@ if (!isset($_SESSION["id"])) {
 }
 
 if (isset($_SESSION["role"])) {
-    if ($_SESSION["role"] != 4) {
+    if ($_SESSION["role"] != 2) {
         header("Location: ../login.php");
     }
 }
@@ -24,8 +24,40 @@ if (isset($_SESSION["role"])) {
 
 <body>
     <?php require __DIR__ . "/../../shared/headers/headerOnline.php"; ?>
-    <h1>Page Validateur</h1>
-    <p>Vous êtes sur la page Validateur</p>
+    <h2>Gérer les membres</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    <p>ID</p>
+                </td>
+                <td>
+                    <p>Pseudo</p>
+                </td>
+                <td>
+                    <p>Email</p>
+                </td>
+                <td>
+                    <p>Type de compte</p>
+                </td>
+                <td></td>
+                <td>
+                    <p>Statut du compte</p>
+                </td>
+                <td></td>
+                <td>
+                    <p>Activité</p>
+                </td>
+            </tr>
+            <?php
+            $validator = new Validator();
+            if (isset($_SESSION["id"])) {
+                $idUser = $_SESSION["id"];
+            }
+            $validator->displayUsersValidator($idUser);
+            ?>
+        </thead>
+    </table>
     <?php require __DIR__ . "/../../shared/footer/footer.php"; ?>
 </body>
 
