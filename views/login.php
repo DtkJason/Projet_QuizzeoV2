@@ -54,7 +54,7 @@ if (isset($_POST["submit"])) {
 <body>
     <?php require __DIR__ . "/../shared/headers/headerOffline.php"; ?>
     <div>
-        <h1>Connexion</h1>
+        <h2>Connexion</h2>
         <form method="POST">
             <label for="email">Email </label>
             <input type="email" name="email" placeholder="Email" required>

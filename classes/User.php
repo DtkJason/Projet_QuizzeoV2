@@ -74,4 +74,15 @@ class User extends Database
             echo "Votre ticket a été crée";
         }
     }
+
+    public function generateApiKey()
+    {
+        $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $longueurCaracteres = strlen($caracteres);
+        $apiKey = '';
+        for ($i = 0; $i <= 32; $i++) {
+            $apiKey .= $caracteres[rand(0, $longueurCaracteres - 1)];
+        }
+        return $apiKey;
+    }
 }

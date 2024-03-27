@@ -1,9 +1,21 @@
 <?php
-require __DIR__ . "/../classes/authentification.php";
+require __DIR__ . "/../classes/Authentification.php";
+
+function generateApiKey()
+{
+    $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $longueurCaracteres = strlen($caracteres);
+    $apiKey = '';
+    for ($i = 0; $i < 32; $i++) {
+        $apiKey .= $caracteres[rand(0, $longueurCaracteres - 1)];
+    }
+    return $apiKey;
+}
 
 if (isset($_POST["submit"])) {
     $registration = new Authentification();
-    $registration->register($_POST["pseudo"], $_POST["email"], $_POST["password"]);
+    $apiKey = generateApiKey();
+    $registration->register($_POST["pseudo"], $_POST["email"], $_POST["password"], generateApiKey());
 }
 ?>
 
@@ -18,7 +30,7 @@ if (isset($_POST["submit"])) {
 
 <body>
     <?php require __DIR__ . "/../shared/headers/headerOffline.php"; ?>
-    <h1>Inscription</h1>
+    <h2>Inscription</h2>
 
     <form method="POST">
         <label for="pseudo">Pseudo : </label>

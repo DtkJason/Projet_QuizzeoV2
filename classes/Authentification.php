@@ -3,9 +3,9 @@ require __DIR__ . "/../config/Database.php";
 
 class Authentification extends Database
 {
-    public function register($pseudo, $email, $password)
+    public function register($pseudo, $email, $password, $apiKey)
     {
-        if (!empty($pseudo) && !empty($email) && !empty($password)) {
+        if (!empty($pseudo) && !empty($email) && !empty($password) && !empty($apiKey)) {
             $query1 = $this->bdd->prepare("SELECT * FROM utilisateur WHERE pseudo = :pseudo");
             $query1->bindParam(":pseudo", $pseudo);
             $query1->execute();
@@ -21,10 +21,11 @@ class Authentification extends Database
                     echo "Email déjà utilisé";
                 } else {
                     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                    $query3 = $this->bdd->prepare("INSERT INTO utilisateur(pseudo, email, mdp, id_groupe) VALUES (:pseudo, :email, :mdp, 5)");
+                    $query3 = $this->bdd->prepare("INSERT INTO utilisateur(pseudo, email, mdp, api_key, id_groupe) VALUES (:pseudo, :email, :mdp, :apiKey, 5)");
                     $query3->bindParam(":pseudo", $pseudo);
                     $query3->bindParam(":email", $email);
                     $query3->bindParam(":mdp", $passwordHash);
+                    $query3->bindParam(":apiKey", $apiKey);
                     $query3->execute();
                     echo "Inscription réussie !";
                 }
