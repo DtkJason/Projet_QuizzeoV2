@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if(isset($_SESSION["id"])) {
-    if($_SESSION["role"] == 5) {
+if (isset($_SESSION["role"])) {
+    if ($_SESSION["role"] == 5) {
         header("Location: views/admin/adminPage.php");
         exit();
     } elseif ($_SESSION["role"] == 4) {

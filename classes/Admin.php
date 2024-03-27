@@ -3,7 +3,7 @@ require "Validator.php";
 
 class Admin extends Validator
 {
-    public function addUser($pseudo, $email, $password)
+    public function addUser($pseudo, $email, $password, $apiKey)
     {
         if (!empty($pseudo) && !empty($email) && !empty($password)) {
             $query1 = $this->bdd->prepare("SELECT * FROM utilisateur WHERE pseudo = :pseudo");
@@ -21,10 +21,11 @@ class Admin extends Validator
                     echo "Email déjà utilisé";
                 } else {
                     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                    $query3 = $this->bdd->prepare("INSERT INTO utilisateur(pseudo, email, mdp, id_groupe) VALUES (:pseudo, :email, :mdp, 5)");
+                    $query3 = $this->bdd->prepare("INSERT INTO utilisateur(pseudo, email, mdp, api_key, id_groupe) VALUES (:pseudo, :email, :mdp, :apiKey, 5)");
                     $query3->bindParam(":pseudo", $pseudo);
                     $query3->bindParam(":email", $email);
                     $query3->bindParam(":mdp", $passwordHash);
+                    $query3->bindParam(":apiKey", $apiKey);
                     $query3->execute();
                 }
             }
