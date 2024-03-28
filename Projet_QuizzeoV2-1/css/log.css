@@ -1,0 +1,176 @@
+.topnav{
+    background-color: rgb(0, 0, 0);
+    color: antiquewhite;
+}
+/* .sidenav{
+    background-color: rgb(40, 40, 40);
+    color: rgb(252, 230, 159);
+    height: 200rem;
+} */
+
+
+/* login style */
+.logbox{
+	margin-top: 100px;
+	width: 300px;
+    height: 300px;
+
+	margin-left: auto;
+    margin-right: auto;
+
+    border-radius: 20px;
+    background: #f0edcf;
+    box-shadow:  20px 20px 20px #ccc9b0,
+             -20px -20px 20px #ffffee;
+}
+.logdiv{
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 20px;
+    width: 120px;
+}
+
+/*log2*/
+html {
+	height: 100%;
+  }
+
+  
+  .login-box {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 400px;
+	padding: 40px;
+	transform: translate(-50%, -50%);
+	background: rgba(0,0,0,.5);
+	box-sizing: border-box;
+	box-shadow: 0 15px 25px rgba(0,0,0,.6);
+	border-radius: 10px;
+  }
+  
+  .login-box h1 {
+	margin: 0 0 30px;
+	padding: 0;
+	color: #fff;
+	text-align: center;
+  }
+  
+  .login-box .user-box {
+	position: relative;
+  }
+  
+  .login-box .user-box input {
+	width: 100%;
+	padding: 10px 0;
+	font-size: 16px;
+	color: #fff;
+	margin-bottom: 30px;
+	border: none;
+	border-bottom: 1px solid #fff;
+	outline: none;
+	background: transparent;
+  }
+  .login-box .user-box label {
+	position: absolute;
+	top:0;
+	left: 0;
+	padding: 10px 0;
+	font-size: 16px;
+	color: #fff;
+	pointer-events: none;
+	transition: .5s;
+  }
+  
+  .login-box .user-box input:focus ~ label,
+  .login-box .user-box input:valid ~ label {
+	top: -20px;
+	left: 0;
+	color: #F0EDCF;
+	font-size: 12px;
+  }
+  
+  .sub-box  {
+	border: solid 0px;
+	background: #ffffff00;
+	position: relative;
+	display: inline-block;
+	padding: 10px 20px;
+	color: #F0EDCF;
+	font-size: 16px;
+	text-decoration: none;
+	text-transform: uppercase;
+	overflow: hidden;
+	transition: .5s;
+	margin-top: 40px;
+	letter-spacing: 4px
+	
+  }
+  
+  .sub-box:hover {
+	background: #F0EDCF;
+	color: #0B60B0;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #F0EDCF,
+				0 0 25px #F0EDCF,
+				0 0 50px #F0EDCF,
+				0 0 100px #F0EDCF;
+  }
+
+  .select {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+    width: 100%;
+}    .select select {
+        font-family: 'Arial';
+        display: inline-block;
+        width: 100%;
+        cursor: pointer;
+        padding: 10px 15px;
+        outline: 0;
+        border: 0px solid #000000;
+        border-radius: 21px;
+        background: #e6e6e6e1;
+        color: #1dafb9;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+        .select select::-ms-expand {
+            display: none;
+        }
+        .select select:hover,
+        .select select:focus {
+            color: #008b80;
+            background: #ccccccc2;
+        }
+        .select select:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+.select_arrow {
+    position: absolute;
+    top: 16px;
+    right: 15px;
+    pointer-events: none;
+    border-style: solid;
+    border-width: 8px 5px 0px 5px;
+    border-color: #7b7b7b transparent transparent transparent;
+}
+.select select:hover ~ .select_arrow,
+.select select:focus ~ .select_arrow {
+    border-top-color: #000000;
+}
+.select select:disabled ~ .select_arrow {
+    border-top-color: #cccccc;
+}
+.labelselect{
+  color:#46dae5 ;
+}
+
+
+
+
+
